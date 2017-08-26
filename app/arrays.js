@@ -1,59 +1,60 @@
 exports = typeof window === 'undefined' ? global : window;
 
 exports.arraysAnswers = {
-  indexOf: function(arr, item) {
+  indexOf: (arr, item) => arr.indexOf(item),
 
-  },
+  sum: (arr) => arr
+    .reduce(
+      (acum, value) => acum + value
+      ,0),
 
-  sum: function(arr) {
+  remove: (arr, item) => arr
+    .filter(el => el !== item),
 
-  },
+  removeWithoutCopy: (arr, item) => arr
+    .filter(el => el !== item),
 
-  remove: function(arr, item) {
+  // i can use "push" but this return the lenght
+  // append(arr, item){ arr.push(item); return arr; }
+  append: (arr, item) => [...arr, item],
 
-  },
+  // I would like use arr.pop(), but I can't do that functional because return
+  // the element deleted
+  // I can use "slice" too
+  truncate: (arr) => arr
+    .slice(0, arr.length - 1),
 
-  removeWithoutCopy: function(arr, item) {
+  prepend: (arr, item) => [item, ...arr],
 
-  },
+  curtail: ([first, ...arr]) => arr,
 
-  append: function(arr, item) {
+  //I can use "concat"
+  concat: (arr1, arr2) => [...arr1, ...arr2] ,
 
-  },
+  insert: (arr, item, index) => arr
+    .splice(index, 0, item) ? arr : arr,
 
-  truncate: function(arr) {
+  count: (arr, item) => arr
+    .filter(el => el === item).length,
 
-  },
+  duplicates: arr => arr
+    .sort()
+    .reduce(
+      (acum, value, i) => arr[i + 1] ?
+        value === arr[i + 1] ?
+          [... new Set([...acum, value])]
+          :
+          acum
+        :
+        acum
+      ,[]),
 
-  prepend: function(arr, item) {
+  square: arr => arr.map(el => el * el),
 
-  },
-
-  curtail: function(arr) {
-
-  },
-
-  concat: function(arr1, arr2) {
-
-  },
-
-  insert: function(arr, item, index) {
-
-  },
-
-  count: function(arr, item) {
-
-  },
-
-  duplicates: function(arr) {
-
-  },
-
-  square: function(arr) {
-
-  },
-
-  findAllOccurrences: function(arr, target) {
-
-  }
-};
+  findAllOccurrences: (arr, target) => arr
+    .reduce((acum, value, i) => value === target ?
+      [...acum, i]
+      :
+      acum
+    , [])
+}

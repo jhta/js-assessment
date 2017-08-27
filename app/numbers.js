@@ -5,9 +5,7 @@ exports.numbersAnswers = {
 
   },
 
-  base10: function(str) {
-
-  },
+  base10: (str) => parseInt(str, 2),
 
   convertToBinary: function(num) {
 

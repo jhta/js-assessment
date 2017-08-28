@@ -14,5 +14,5 @@ exports.regexAnswers = {
   // XXX-XXX-XXXX
   matchesPattern: (str) => (/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/).test(str),
 
-  isUSD: (str) => (/^[+-]?[0-9]{1,3}(?:,?[0-9]{1,3})*\.[0-9]{1,3}$/).test(str)
+  isUSD: (str) => (/^\$(([1-9]\d{0,2}(,\d{3})*)|(([1-9]\d*)?\d))(\.\d\d)?$/).test(str)
 };

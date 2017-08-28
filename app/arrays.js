@@ -11,8 +11,19 @@ exports.arraysAnswers = {
   remove: (arr, item) => arr
     .filter(el => el !== item),
 
-  removeWithoutCopy: (arr, item) => arr
-    .filter(el => el !== item),
+  removeWithoutCopy: (arr, item) => {
+    let len = arr.length;
+    let i = 0;
+    while(i < len) {
+      if (arr[i] === item) {
+        arr.splice(i, 1);
+        len--;
+      } else {
+        i++;
+      }
+    }
+    return arr;
+  },
 
   // i can use "push" but this return the lenght
   // append(arr, item){ arr.push(item); return arr; }

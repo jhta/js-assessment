@@ -1,9 +1,8 @@
 exports = typeof window === 'undefined' ? global : window;
 
 exports.stringsAnswers = {
-  reduceString: function(str, amount) {
-
-  },
+  reduceString: (str, amount) => str
+    .replace(new RegExp("(.)(?=\\1{" + amount + "})","g"), ""),
 
   wordWrap: (str, cols) => str.split(' ')
     .reduce((array, val) => {
